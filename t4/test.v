@@ -7,9 +7,11 @@
 module test;
 
 localparam w=7;
+localparam l=10;
 
 reg 		clk;
 reg 		reset;
+reg 		wrt_read;
 reg [w:0] 	write;
 reg [3:0] 	add;
 reg 		enable;
@@ -18,44 +20,79 @@ wire [w:0] 	out;
 
 initial begin 
 clk=0;
-forever #5 clk = !clk;
+forever #2 clk = !clk;
 end
 
 // instance of memory
-memory mem0 (
+memory #( .w(w),
+		  .l(l))
+	mem0 (
 	.clk(clk),
 	.reset(reset),
+	.wrt_read(wrt_read),
 	.write(write),
 	.add(add),
 	.enable(enable),
 	.out(out)
 );
 
+integer dl=5;
 
 // test procedure 
 initial begin 
 
+$dumpfile("wave.vcd");
+$dumpvars(0,test);
+
+
+//initialize 
 reset=1;
 write=0;
 add=0;
 enable=0;
+wrt_read=0;
+#dl
+$display("After reset asserted - out: %d", out);
 
-
-#5 reset=0;
-write=3;
+reset=0;
+enable=1;
+wrt_read=1;
+write=10;
 add=0;
-enable=1;
+#dl
+
+write=33;
+add=3;
+#dl
 
 
-#5 reset=0;
-write=6;
+
+write=66;
 add=5;
-enable=1;
+#dl
+
+
+wrt_read=0;
+add=0;
+#dl 
+$display("0) out: %d",out);
+
+add=1;
+#dl
+$display("1) out: %d",out);
+
+
+add=3;
+#dl
+$display("3) out: %d",out);
 
 
 
 
-#10 $finish;
+
+
+#10 
+$finish;
 end
 
 

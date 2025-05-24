@@ -7,7 +7,8 @@ module memory #(
 (
 	input  wire	 		clk,
 	input  wire 		reset,
-	input  wire [w:0] 	write,
+	input  wire 		wrt_read,
+	input  wire [w:0]	write,
 	input  wire [3:0] 	add,
 	input  wire 		enable,
 	output wire [w:0] 	out
@@ -25,18 +26,22 @@ assign out= out_reg;
 always @ (posedge clk or posedge reset) begin
 	if (reset) begin
 		$display("resetting memory");
+		out_reg<=0;
 		for (i=0 ; i<l ; i=i+1) begin
 			mem[i]<=0;	
 		end
 	end 
 	else begin
 
-		if (write && enable) begin
-			mem[add]<=write;
-			$display("assign. mem[%d]: %d",add,write);
-		end else begin
-			out_reg<= mem[add];
-			$display("read. mem[%d]",add);
+		if (enable) begin
+			if (wrt_read) begin
+				mem[add]<=write;
+				$display("assign. mem[%d]: %d",add,write);
+			end else begin
+				out_reg<= mem[add];
+				$display("read. mem[%d]",mem[add]);
+			end 
+			
 		end
 	end
 end
