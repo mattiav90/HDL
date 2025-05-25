@@ -23,8 +23,8 @@ clk=0;
 forever #2 clk = !clk;
 end
 
-// instance of memory
-memory #( .w(w),
+// ice of memory
+memory1 #( .w(w),
 		  .l(l))
 	mem0 (
 	.clk(clk),
@@ -57,31 +57,35 @@ $display("After reset asserted - out: %d", out);
 reset=0;
 enable=1;
 wrt_read=1;
+
+// write 10 in add=0
 write=10;
 add=0;
 #dl
 
+//write 33 in add=3
 write=33;
 add=3;
 #dl
 
 
-
+//write 66 in add=5
 write=66;
 add=5;
 #dl
 
-
+// read from add 0
 wrt_read=0;
 add=0;
 #dl 
 $display("0) out: %d",out);
 
+//read from add 1
 add=1;
 #dl
 $display("1) out: %d",out);
 
-
+//read from add 3
 add=3;
 #dl
 $display("3) out: %d",out);
