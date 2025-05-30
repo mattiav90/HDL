@@ -84,7 +84,6 @@ pe_4b pe_4(
 // latch it to the output register.
 // 
 always @ (posedge clk or posedge rst) begin
-
 	if (rst) begin
 		out<=0;
 		val<=0;
@@ -94,8 +93,6 @@ always @ (posedge clk or posedge rst) begin
 		out<= {out_2s,out_t_reg[out_2s]};
 		val<= val_2s;
 	end
-
-
 end
 
 
