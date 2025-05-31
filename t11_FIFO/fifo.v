@@ -16,8 +16,8 @@ module fifo #(	parameter DATA_W=8,
 	input wire [DATA_W-1:0] din,
 
 	output reg [DATA_W-1:0] dout,
-	output reg full,
-	output reg empty
+	output wire full,
+	output wire empty
 );
 
 // memory, pointers for read write and counter. 
@@ -29,38 +29,42 @@ reg [ADD_W:0] count;
 always @ (posedge clk or posedge rst) begin
 
 	if (rst) begin
-		full<=0;
-		empty<=1;
 		count<=0;
 		wrt_ptr<=0;
 		rd_ptr<=0;
 	end else begin
 
 		//write fifo
-
-		if (wr_en & !full) begin
+		
+		if (wr_en && !full) begin
 			mem[wrt_ptr] <= din;
 			wrt_ptr <= wrt_ptr+1;
-			count<=count+1;
-			$display("writing mem[",wrt_ptr,"]: ",din);
+			count <= count + 1;
+			//$display("writing mem[",wrt_ptr,"]: ",din," count: ",count," empty: ",empty," full: ",full);
 		end
 
 		//read fifo
-		if (rd_en & !empty) begin
+		if (rd_en && !empty) begin
 			dout<=mem[rd_ptr];
 			rd_ptr<=rd_ptr+1;
-			count<=count-1;
+			count <= count - 1;
+			//$display("reading mem[",rd_ptr,"]: ",dout," count: ",count," empty: ",empty," full: ",full);
 		end
 
 		
-		full <= (count==L-1) ? 1 : 0;
-		empty <= (count==0);
-
 	end
+
+//$display("mem[0]: ",mem[0]);
+//$display("mem[1]: ",mem[1]);
+//$display("mem[2]: ",mem[2]);
+
 
 
 end
 
+assign full = (count  == L) ;
+//	full <= ( ( (wr_en && !full) && !(rd_en && !empty) && (count + 1 == L) ) || (count == L) );
+assign	empty = (count==0);
 
 
 

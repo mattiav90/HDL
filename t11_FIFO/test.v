@@ -7,7 +7,7 @@
 module test();
 
 parameter DATA_W=8;
-parameter L=10;
+parameter L=3;
 parameter ADD_W=$clog2(L);
 
 reg clk;
@@ -44,30 +44,37 @@ end
 
 
 initial begin
+$dumpfile("wave.vcd");
+$dumpvars(0,test);
 
+$monitor("dout: %d",dout," full: ",full," empty: ",empty);
 rst=1;  #10;
-rst=0;  #10;
+rst=0;  
+
+din=3; 
+#1;
+wr_en=1;
 
 //write in a bunch of files. 
-wr_en=1;
-din=1; #4;
-din=2; #4;
-din=3; #4;
+
+din=4; #4;
+din=5; #4;
+din=6; #4;
+din=7; #4;
+din=8; #4;
+din=9; #4;
+din=10; #4;
 
 
 //read out a bunch of files. 
 
 wr_en=0;
 rd_en=1;
-$monitor("dout: %d",dout);
 
 
 
 
-
-
-
-#10;
+#100;
 $finish;
 end
 
