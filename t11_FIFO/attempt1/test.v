@@ -50,27 +50,26 @@ $dumpvars(0,test);
 $monitor("dout: %d",dout," full: ",full," empty: ",empty);
 rst=1;  #10;
 rst=0;  
+rd_en=0;
 
-din=3; 
-#1;
-wr_en=1;
+//set the data before enabling the wr_en.
+ wr_en=1;
 
 //write in a bunch of files. 
-
+din=3; #4;
 din=4; #4;
 din=5; #4;
+
+
+wr_en=0; rd_en=1;
+#20
+
+wr_en=1; rd_en=0;
 din=6; #4;
 din=7; #4;
-din=8; #4;
-din=9; #4;
-din=10; #4;
 
-
-//read out a bunch of files. 
-
-wr_en=0;
-rd_en=1;
-
+wr_en=0; rd_en=1;
+#8
 
 
 

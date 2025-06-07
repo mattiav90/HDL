@@ -40,6 +40,7 @@ always @ (posedge clk or posedge rst) begin
 			mem[wrt_ptr] <= din;
 			wrt_ptr <= wrt_ptr+1;
 			count <= count + 1;
+			$display("din: ",din);
 			//$display("writing mem[",wrt_ptr,"]: ",din," count: ",count," empty: ",empty," full: ",full);
 		end
 
@@ -50,20 +51,13 @@ always @ (posedge clk or posedge rst) begin
 			count <= count - 1;
 			//$display("reading mem[",rd_ptr,"]: ",dout," count: ",count," empty: ",empty," full: ",full);
 		end
-
-		
+	
 	end
-
-//$display("mem[0]: ",mem[0]);
-//$display("mem[1]: ",mem[1]);
-//$display("mem[2]: ",mem[2]);
-
 
 
 end
 
 assign full = (count  == L) ;
-//	full <= ( ( (wr_en && !full) && !(rd_en && !empty) && (count + 1 == L) ) || (count == L) );
 assign	empty = (count==0);
 
 
