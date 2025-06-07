@@ -1,4 +1,4 @@
-module sync_fifo_TB;
+module test;
 
 	  reg clk, rst_n;
 	  reg w_en, r_en;
@@ -7,8 +7,10 @@ module sync_fifo_TB;
 	  wire full, empty;	  
       fifo fifo0(clk, rst_n, w_en, r_en, data_in, data_out, full, empty);
 
-		initial clk = 0;
-		always #2 clk = ~clk;
+	initial begin
+	clk = 0;
+	forever #2 clk = ~clk;
+	end
 	 
 	initial begin
 	  clk = 0; 
