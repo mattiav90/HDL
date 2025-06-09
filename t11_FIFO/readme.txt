@@ -19,3 +19,9 @@ to check whethere it is full or empty, but it adds an adder, that
 is actually non necessary. 
 the adder become critical for performance. 
 
+- fifo3.v
+this implementation is specifically implemented to support dual port BRAM.
+dual-port BRAM can be instantiated by the synthesis tools if I write the 
+code in an appropiate way. I can clearly ask the tools to use it, or also
+I can write the code in a whay that I intend to do READ and WRITE operations
+at the same time. then it will be instantiated also in that case. 

@@ -5,7 +5,7 @@ module test;
 	reg [7:0] data_in;
 	wire [7:0] data_out;
 	wire full, empty;	  
-    fifo1 fifo(clk, rst_n, w_en, r_en, data_in, data_out, full, empty);
+    fifo3 fifo(clk, rst_n, w_en, r_en, data_in, data_out, full, empty);
 
 	initial begin
 	clk = 0;
