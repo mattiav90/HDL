@@ -43,25 +43,25 @@ din=3;
 
 
 din = 3;  #5;
-$display("dout = %0d", dout);
+$display("din= %d dout = %0d",din, dout);
 
 din = 10; #5;
-$display("dout = %0d", dout);
+$display("din= %d dout = %0d",din, dout);
 
 din = 2;  #5;
-$display("dout = %0d", dout);
+$display("din= %d dout = %0d",din, dout);
 
 din = 7;  #5;
-$display("dout = %0d", dout);
+$display("din= %d dout = %0d",din, dout);
 
 din = 20;  #5;
-$display("dout = %0d", dout);
+$display("din= %d dout = %0d",din, dout);
 
 
 
 
 #10
-$display("dout= ",dout);
+$display("din= %d dout = %0d",din,dout);
 
 
 
