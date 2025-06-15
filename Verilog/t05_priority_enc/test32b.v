@@ -7,11 +7,11 @@ module test();
 
 localparam w=32;
 
-reg 				clk;
-reg [w-1:0]			in;
-reg 				rst;
-wire 				val;
-wire [$clog2(w):0]	out;
+reg 				 clk;
+reg [w-1:0]			 in;
+reg 				 rst;
+wire 				 val;
+wire [$clog2(w)-1:0] out;
 
 
 pe_32b pe32 (
@@ -34,11 +34,11 @@ $dumpfile("wave.vcd");
 $dumpvars(0,test);
 
 
-$monitor("monitor. time: %0t rst: %d val: %d out: %d",$time,rst,val,out);
+$monitor("monitor. time: %0t rst: %d in: %b out: %d",$time,rst,in,out);
 
-rst=1;
-#4
 rst=0;
+#4
+rst=1;
 in=32'b00000000000000000000000000000001;
 #4
 in=32'b00000000000000000000000000000010;

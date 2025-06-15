@@ -6,12 +6,12 @@
 module test;
 
 
-parameter w_in  = 7;
+parameter w_in  = 8;
 parameter w_out = $clog2(w_in);
 
 
-reg  [w_in:0] 			in;
-wire [$clog2(w_in):0] 	out;
+reg  [w_in-1:0] 			in;
+wire [$clog2(w_in)-1:0] 	out;
 wire 					val; 
 
 

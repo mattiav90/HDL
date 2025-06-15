@@ -1,5 +1,5 @@
 $date
-	Sun Jun 15 17:09:35 2025
+	Sun May 25 12:37:17 2025
 $end
 $version
 	Icarus Verilog
@@ -9,7 +9,7 @@ $timescale
 $end
 $scope module test $end
 $var wire 1 ! val $end
-$var wire 5 " out [4:0] $end
+$var wire 6 " out [5:0] $end
 $var parameter 32 # w $end
 $var reg 1 $ clk $end
 $var reg 32 % in [31:0] $end
@@ -18,38 +18,36 @@ $scope module pe32 $end
 $var wire 1 $ clk $end
 $var wire 32 ' in [31:0] $end
 $var wire 1 & rst $end
-$var wire 1 ! val $end
-$var wire 1 ( val2 $end
-$var wire 4 ) val1 [3:0] $end
-$var wire 2 * lev2 [1:0] $end
-$var reg 5 + out [4:0] $end
-$var reg 2 , r_lev2 [1:0] $end
-$var reg 4 - r_val1 [3:0] $end
-$var reg 1 . r_val2 $end
-$scope module pe0 $end
-$var wire 8 / in [7:0] $end
-$var wire 1 0 val $end
-$var reg 3 1 out [2:0] $end
+$var wire 4 ( val_t [3:0] $end
+$var wire 1 ) val_2s $end
+$var wire 2 * out_2s [1:0] $end
+$var reg 6 + out [5:0] $end
+$var reg 1 ! val $end
+$var reg 4 , val_t_reg [3:0] $end
+$scope module pe_0 $end
+$var wire 8 - in [7:0] $end
+$var reg 4 . out [3:0] $end
+$var reg 1 / val $end
 $upscope $end
-$scope module pe1 $end
-$var wire 8 2 in [7:0] $end
-$var wire 1 3 val $end
-$var reg 3 4 out [2:0] $end
+$scope module pe_1 $end
+$var wire 8 0 in [7:0] $end
+$var reg 4 1 out [3:0] $end
+$var reg 1 2 val $end
 $upscope $end
-$scope module pe2 $end
-$var wire 8 5 in [7:0] $end
-$var wire 1 6 val $end
-$var reg 3 7 out [2:0] $end
+$scope module pe_2 $end
+$var wire 8 3 in [7:0] $end
+$var reg 4 4 out [3:0] $end
+$var reg 1 5 val $end
 $upscope $end
-$scope module pe3 $end
-$var wire 8 8 in [7:0] $end
-$var wire 1 9 val $end
-$var reg 3 : out [2:0] $end
+$scope module pe_3 $end
+$var wire 8 6 in [7:0] $end
+$var reg 4 7 out [3:0] $end
+$var reg 1 8 val $end
 $upscope $end
-$scope module pe4 $end
-$var wire 4 ; in [3:0] $end
-$var wire 1 ( val $end
-$var reg 2 < out [1:0] $end
+$scope module pe_4 $end
+$var wire 4 9 in [3:0] $end
+$var reg 2 : out [1:0] $end
+$var reg 1 ) val $end
 $upscope $end
 $upscope $end
 $upscope $end
@@ -60,29 +58,27 @@ b100000 #
 $end
 #0
 $dumpvars
-b0 <
-b0 ;
-bx :
-x9
-bx 8
+b0 :
+b0 9
+x8
 bx 7
-x6
-bx 5
+bx 6
+x5
 bx 4
-x3
-bx 2
+bx 3
+x2
 bx 1
-x0
-bx /
-0.
-b0 -
+bx 0
+x/
+bx .
+bx -
 b0 ,
 b0 +
 b0 *
-bx )
-0(
+0)
+bx (
 bx '
-0&
+1&
 bx %
 0$
 b0 "
@@ -91,41 +87,40 @@ $end
 #2000
 1$
 #4000
+b0 .
+0/
 b0 1
+02
 b0 4
+05
 b0 7
-b0 :
-10
-b1 /
-03
-b0 2
-06
-b0 5
-b1 )
-09
-b0 8
+b1000 (
+18
+b0 -
+b0 0
+b0 3
+b1 6
 0$
 b1 %
 b1 '
-1&
+0&
 #6000
-1(
-b1 -
-b1 ;
+1)
+b1 ,
+b1 9
 1$
 #8000
-b1 1
-b10 /
+b1 7
+b10 6
 0$
 b10 %
 b10 '
 #10000
 1!
-1.
 1$
 #12000
-b11 1
-b1000 /
+b11 7
+b1000 6
 0$
 b1000 %
 b1000 '
@@ -134,8 +129,8 @@ b1 "
 b1 +
 1$
 #16000
-b100 1
-b10000 /
+b100 7
+b10000 6
 0$
 b10000 %
 b10000 '
@@ -144,8 +139,8 @@ b11 "
 b11 +
 1$
 #20000
-b101 1
-b100000 /
+b101 7
+b100000 6
 0$
 b100000 %
 b100000 '
@@ -154,8 +149,8 @@ b100 "
 b100 +
 1$
 #24000
-b110 1
-b1000000 /
+b110 7
+b1000000 6
 0$
 b1000000 %
 b1000000 '
@@ -164,8 +159,8 @@ b101 "
 b101 +
 1$
 #28000
-b111 1
-b10000000 /
+b111 7
+b10000000 6
 0$
 b10000000 %
 b10000000 '
@@ -174,91 +169,90 @@ b110 "
 b110 +
 1$
 #32000
-b0 1
-00
-b0 /
-b10 )
-13
-b1 2
+15
+b0 7
+b100 (
+08
+b1 3
+b0 6
 0$
 b100000000 %
 b100000000 '
 #34000
 b1 *
-b1 <
+b1 :
 b111 "
 b111 +
-1(
-b10 -
-b10 ;
+b10 ,
+b10 9
 1$
 #36000
 b1 4
-b10 2
+b10 3
 0$
 b1000000000 %
 b1000000000 '
 #38000
-b1 ,
-b0 "
-b0 +
+b1000 "
+b1000 +
 1$
 #40000
-b110 7
-b1 :
-16
-b1000001 5
-b1110 )
-19
-b10 8
+b1 .
+1/
+b110 1
+b111 (
+12
+b10 -
+b1000001 0
 0$
 b10010000010000001000000000 %
 b10010000010000001000000000 '
 #42000
 b11 *
-b11 <
+b11 :
 b1001 "
 b1001 +
-b1110 -
-b1110 ;
+b1110 ,
+b1110 9
 1$
 #44000
+b100 .
+b0 1
+b101 (
+02
 b111 4
-b0 7
-b100 :
-b10000001 2
-b1010 )
-06
-b0 5
-b10001 8
+b10001 -
+b0 0
+b10000001 3
 0$
 b10001000000001000000100000000 %
 b10001000000001000000100000000 '
 #46000
-b1010 -
-b1010 ;
-b11 ,
+b1010 ,
+b1010 9
+b11001 "
+b11001 +
 1$
 #48000
-b111 1
+b111 .
+b10 1
+12
 b110 4
-b10 7
-b111 :
-10
-b10000000 /
-b1000000 2
-b1111 )
-16
-b100 5
-b10000001 8
+b111 7
+b1111 (
+18
+b10000001 -
+b100 0
+b1000000 3
+b10000000 6
 0$
 b10000001000001000100000010000000 %
 b10000001000001000100000010000000 '
 #50000
 b11100 "
 b11100 +
-b1111 -
-b1111 ;
+b1111 ,
+b1111 9
 1$
 #52000
 0$

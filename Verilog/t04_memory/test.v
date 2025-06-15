@@ -12,10 +12,10 @@ localparam l=10;
 reg 		clk;
 reg 		reset;
 reg 		wrt_read;
-reg [w:0] 	write;
+reg [w-1:0] 	write;
 reg [3:0] 	add;
 reg 		enable;
-wire [w:0] 	out;
+wire [w-1:0] 	out;
 
 
 initial begin 
@@ -24,8 +24,8 @@ forever #2 clk = !clk;
 end
 
 // ice of memory
-memory1 #( .w(w),
-		  .l(l))
+memory #( .W(w),
+		  .L(l))
 	mem0 (
 	.clk(clk),
 	.reset(reset),
