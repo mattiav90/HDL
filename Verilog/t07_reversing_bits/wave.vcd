@@ -1,5 +1,5 @@
 $date
-	Fri May 30 15:15:56 2025
+	Sun Jun 15 18:25:02 2025
 $end
 $version
 	Icarus Verilog
@@ -13,39 +13,35 @@ $var parameter 32 " W $end
 $var reg 16 # din [15:0] $end
 $scope module rb $end
 $var wire 16 $ din [15:0] $end
-$var wire 16 % dout [15:0] $end
-$var parameter 32 & WIDTH $end
-$var reg 16 ' temp [15:0] $end
-$var integer 32 ( i [31:0] $end
+$var parameter 32 % W $end
+$var reg 16 & dout [15:0] $end
+$var integer 32 ' i [31:0] $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
 $comment Show the parameter values. $end
 $dumpall
-b10000 &
+b10000 %
 b10000 "
 $end
 #0
 $dumpvars
-b10000 (
-b1111000000001 '
-b1111000000001 %
+b10000 '
+b1111000000001 &
 b1000000001111000 $
 b1000000001111000 #
 b1111000000001 !
 $end
 #10000
 b1111 !
-b1111 %
-b1111 '
-b10000 (
+b1111 &
+b10000 '
 b1111000000000000 #
 b1111000000000000 $
 #20000
 b1110000000000001 !
-b1110000000000001 %
-b1110000000000001 '
-b10000 (
+b1110000000000001 &
+b10000 '
 b1000000000000111 #
 b1000000000000111 $
 #30000

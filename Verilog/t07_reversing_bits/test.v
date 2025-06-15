@@ -23,15 +23,15 @@ $dumpvars(0,test);
 
 din = 16'b1000000001111000;
 #10
-$display("dout: %b",dout);
+$display("din: %b dout: %b",din,dout);
 
 din = 16'b1111000000000000;
 #10
-$display("dout: %b",dout);
+$display("din: %b dout: %b",din,dout);
 
 din = 16'b1000000000000111;
 #10
-$display("dout: %b",dout);
+$display("din: %b dout: %b",din,dout);
 
 
 
