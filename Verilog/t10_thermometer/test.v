@@ -23,15 +23,15 @@ initial begin
 
 din=8'b0000000;
 #10
-$display("dout: ",dout);
+$display("din: %d dout: ",din,dout);
 
 din=8'b00000011;
 #10
-$display("dout: ",dout);
+$display("din: %d dout: ",din,dout);
 
 din=8'b00000000;
 #10
-$display("dout: ",dout);
+$display("din: %d dout: ",din,dout);
 
 
 $finish;
