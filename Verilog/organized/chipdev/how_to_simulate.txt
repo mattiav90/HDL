@@ -1,0 +1,10 @@
+steps:
+
+write a verilog file, 
+write teststbench
+
+iverilog -g2012 -o sim.out model.sv test.sv
+
+vvp sim.out
+
+gtkwave wave.vcd

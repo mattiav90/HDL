@@ -1,0 +1,37 @@
+	
+valid-ready protocol overview:
+
+- pulse_length input has valid data when 'valid' is asserted
+- 'valid' will remain high untill module asserts 'ready'
+- pulse_length value will not change as long as 'valid' is high and 'ready' is low
+- handshake occurs when 'valid' and 'ready' are high in the same clock.
+	pulse_length may change or go away in the next cycle. 
+
+
+basically on the LEFT side there are the signals:
+
+- input valid
+- input pulse_length
+- output ready
+
+on the RIGHT side there are:
+
+- output pulse
+
+ 
+when the module gets valid, it samples the pulse_length
+and it asserts the pulse for pulse_length cycles. 
+when it is done, it will assert again ready to 1. 
+
+
+
+module pulse_gen(
+	input clk, rst, valid,
+	input [3:0] pulse_length,
+	output pulse, ready
+)
+
+
+
+
+endmodule

@@ -1,0 +1,14 @@
+Toggle synchronizer
+Toggle synchronizer is used to synchronize a pulse generating in source clock 
+domain to destination clock domain. A pulse cannot be synchronized directly 
+using 2 FF synchronizer. While synchronizing from fast clock domain to slow 
+clock domain using 2 FF synchronizer, the pulse can be skipped which can cause 
+the loss of pulse detection & hence subsequent circuit which depends upon it, 
+may not function properly. Diagram in Figure 3 and Figure 4 shows toggle
+synchronizer implementation and Timing diagram.
+
+
+
+source from: 
+https://www.edn.com/synchronizer-techniques-for-multi-clock-domain-socs-fpgas/
+

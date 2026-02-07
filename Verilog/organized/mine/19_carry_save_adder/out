@@ -1,0 +1,105 @@
+#! /usr/local/Cellar/icarus-verilog/12.0/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/usr/local/Cellar/icarus-verilog/12.0/lib/ivl/system.vpi";
+:vpi_module "/usr/local/Cellar/icarus-verilog/12.0/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/local/Cellar/icarus-verilog/12.0/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/local/Cellar/icarus-verilog/12.0/lib/ivl/v2005_math.vpi";
+:vpi_module "/usr/local/Cellar/icarus-verilog/12.0/lib/ivl/va_math.vpi";
+S_0x7f9158a04080 .scope module, "tb_carry_save_adder" "tb_carry_save_adder" 2 3;
+ .timescale -9 -12;
+P_0x600000e84000 .param/l "W" 0 2 5, +C4<00000000000000000000000000001000>;
+v0x600002984510_0 .var "a", 7 0;
+v0x6000029845a0_0 .var "b", 7 0;
+v0x600002984630_0 .var "c", 7 0;
+v0x6000029846c0_0 .net "carry", 7 0, L_0x6000030882a0;  1 drivers
+v0x600002984750_0 .var "csa_result", 8 0;
+v0x6000029847e0_0 .var "expected_total", 8 0;
+v0x600002984870_0 .var/i "i", 31 0;
+v0x600002984900_0 .net "sum", 7 0, L_0x600003088070;  1 drivers
+S_0x7f9158a041f0 .scope module, "dut" "add_carry_save" 2 13, 3 3 0, S_0x7f9158a04080;
+ .timescale 0 0;
+    .port_info 0 /INPUT 8 "a";
+    .port_info 1 /INPUT 8 "b";
+    .port_info 2 /INPUT 8 "c";
+    .port_info 3 /OUTPUT 8 "sum";
+    .port_info 4 /OUTPUT 8 "carry";
+P_0x600000e84080 .param/l "W" 0 3 3, +C4<00000000000000000000000000001000>;
+L_0x600003088000 .functor XOR 8, v0x600002984510_0, v0x6000029845a0_0, C4<00000000>, C4<00000000>;
+L_0x600003088070 .functor XOR 8, L_0x600003088000, v0x600002984630_0, C4<00000000>, C4<00000000>;
+L_0x6000030880e0 .functor AND 8, v0x600002984510_0, v0x6000029845a0_0, C4<11111111>, C4<11111111>;
+L_0x600003088150 .functor AND 8, v0x600002984510_0, v0x600002984630_0, C4<11111111>, C4<11111111>;
+L_0x6000030881c0 .functor OR 8, L_0x6000030880e0, L_0x600003088150, C4<00000000>, C4<00000000>;
+L_0x600003088230 .functor AND 8, v0x6000029845a0_0, v0x600002984630_0, C4<11111111>, C4<11111111>;
+L_0x6000030882a0 .functor OR 8, L_0x6000030881c0, L_0x600003088230, C4<00000000>, C4<00000000>;
+v0x600002988000_0 .net *"_ivl_0", 7 0, L_0x600003088000;  1 drivers
+v0x600002984000_0 .net *"_ivl_10", 7 0, L_0x600003088230;  1 drivers
+v0x600002984090_0 .net *"_ivl_4", 7 0, L_0x6000030880e0;  1 drivers
+v0x600002984120_0 .net *"_ivl_6", 7 0, L_0x600003088150;  1 drivers
+v0x6000029841b0_0 .net *"_ivl_8", 7 0, L_0x6000030881c0;  1 drivers
+v0x600002984240_0 .net "a", 7 0, v0x600002984510_0;  1 drivers
+v0x6000029842d0_0 .net "b", 7 0, v0x6000029845a0_0;  1 drivers
+v0x600002984360_0 .net "c", 7 0, v0x600002984630_0;  1 drivers
+v0x6000029843f0_0 .net "carry", 7 0, L_0x6000030882a0;  alias, 1 drivers
+v0x600002984480_0 .net "sum", 7 0, L_0x600003088070;  alias, 1 drivers
+    .scope S_0x7f9158a04080;
+T_0 ;
+    %vpi_call 2 24 "$display", "==== Carry Save Adder Testbench ====" {0 0 0};
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x600002984870_0, 0, 32;
+T_0.0 ;
+    %load/vec4 v0x600002984870_0;
+    %cmpi/s 10, 0, 32;
+    %jmp/0xz T_0.1, 5;
+    %vpi_func 2 28 "$random" 32 {0 0 0};
+    %pad/s 8;
+    %store/vec4 v0x600002984510_0, 0, 8;
+    %vpi_func 2 29 "$random" 32 {0 0 0};
+    %pad/s 8;
+    %store/vec4 v0x6000029845a0_0, 0, 8;
+    %vpi_func 2 30 "$random" 32 {0 0 0};
+    %pad/s 8;
+    %store/vec4 v0x600002984630_0, 0, 8;
+    %delay 1000, 0;
+    %load/vec4 v0x600002984510_0;
+    %pad/u 9;
+    %load/vec4 v0x6000029845a0_0;
+    %pad/u 9;
+    %add;
+    %load/vec4 v0x600002984630_0;
+    %pad/u 9;
+    %add;
+    %store/vec4 v0x6000029847e0_0, 0, 9;
+    %load/vec4 v0x600002984900_0;
+    %pad/u 9;
+    %load/vec4 v0x6000029846c0_0;
+    %pad/u 9;
+    %ix/load 4, 1, 0;
+    %flag_set/imm 4, 0;
+    %shiftl 4;
+    %add;
+    %store/vec4 v0x600002984750_0, 0, 9;
+    %vpi_call 2 37 "$display", "Test %0d | a=%0d b=%0d c=%0d | sum=%0d carry=%0d -> final=%0d (expected=%0d)", v0x600002984870_0, v0x600002984510_0, v0x6000029845a0_0, v0x600002984630_0, v0x600002984900_0, v0x6000029846c0_0, v0x600002984750_0, v0x6000029847e0_0 {0 0 0};
+    %load/vec4 v0x600002984750_0;
+    %load/vec4 v0x6000029847e0_0;
+    %cmp/ne;
+    %jmp/0xz  T_0.2, 6;
+    %vpi_call 2 42 "$display", "MISMATCH at test %0d", v0x600002984870_0 {0 0 0};
+    %vpi_call 2 43 "$stop" {0 0 0};
+T_0.2 ;
+    %load/vec4 v0x600002984870_0;
+    %addi 1, 0, 32;
+    %store/vec4 v0x600002984870_0, 0, 32;
+    %jmp T_0.0;
+T_0.1 ;
+    %vpi_call 2 47 "$display", "All tests passed." {0 0 0};
+    %vpi_call 2 48 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "test.v";
+    "add_carry_save.v";
