@@ -1,0 +1,32 @@
+
+the commands that are covered in lecture 1 are:
+
+date
+echo
+$PATH
+which 	: show what is the binary that is run for a command 
+pwd 	: list the content of the current directory
+cd
+cd .
+cd .. 
+cd - 	: this is to toggle between 2 directories
+man [command]
+mv 	: move a file 
+cp 	: copy a file 
+rm 	: remove a file 
+mkdir	:make a folder 
+man 	: show the manual page for a command 
+ctrl l 	: clear the terminal 
+< file	: give the file as input to a command 
+> file 	: send the output of a command to a file 
+>> 	: append, not overwrite 
+| 	: pipe multiple commands. take one output and feed it as input
+head 	: print the head of a file
+tail 	: print the tail of a file
+root user : can do anything in your system 
+sudo	: do as super user
+sudo su	: gets you a shell as the superuser
+if you are running in a shell as user, you will get a symble such as $
+if you run as a super user you will get another syble such as #
+tee 	: tee take the input and write it to a file 
+open 	: open a file 
